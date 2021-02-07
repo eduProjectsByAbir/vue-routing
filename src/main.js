@@ -1,16 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router';
 import App from './App.vue'
-import ProductList from './ProductList.vue';
-import Cart from './Cart.vue';
+import { routes } from './routes';
+
 
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-    routes: [
-        { path: '', component: ProductList },
-        { path: '/cart', component: Cart }
-    ]
+    routes: routes,
+    mode: 'history'
 });
 
 Vue.filter('currency', function(value) {
