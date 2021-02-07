@@ -1,9 +1,7 @@
 <template>
-    <h1>Viewing a product</h1>
+  <h1>Viewing a product</h1>
 </template>
 
 <script>
-    export default {
-
-    }
+export default {};
 </script>
