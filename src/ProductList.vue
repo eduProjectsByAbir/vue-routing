@@ -5,7 +5,7 @@
         <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" />
         <div class="caption">
           <router-link
-            :to="'/products/' + product.id"
+            :to="'{ name: 'ViewProduct', params: { productIdL product.id }}"
             tag="h4"
             class="group inner list-group-item-heading"
           >
