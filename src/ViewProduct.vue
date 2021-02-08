@@ -1,5 +1,7 @@
 <template>
   <div>
+    <button class="btn btn-primary" @click="goBack">&laquo; Back</button>
+
     <h1>{{ product.name }}</h1>
     <h1><strong>ID:</strong> {{ product.id }}</h1>
     <h1><strong>Price:</strong> {{ product.price | currency }}</h1>
@@ -52,6 +54,9 @@ export default {
         }
       });
       return match;
+    },
+    goBack() {
+      this.$router.push("/");
     },
   },
   computed: {
