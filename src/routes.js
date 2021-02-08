@@ -4,8 +4,9 @@ import ViewProduct from './ViewProduct.vue';
 
 export const routes = [
     { path: '/products/:productId/view', redirect: { name: 'viewProduct' } },
+    // legacy
     { path: '', component: ProductList },
-    { path: '/cart', component: Cart },
+    { path: '/cart', component: Cart , alias: '/shopping-cart'},
     { path: '/products/:productId', props:true, name: 'viewProduct', component: ViewProduct },
     { path: '*', component: { template: '<h1>Page not found!</h1>' } }
 ]
