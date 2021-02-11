@@ -70,6 +70,9 @@ export default {
         params: {
           productId: product.id,
         },
+        query: {
+          discount: 10,
+        },
       });
     },
   },

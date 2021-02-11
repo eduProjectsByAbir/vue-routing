@@ -1,9 +1,12 @@
 <template>
   <div>
-    <h1><strong>ID:</strong> {{ product.id }}</h1>
-    <h1><strong>Price:</strong> {{ product.price | currency }}</h1>
-    <h1><strong>In Stock:</strong> {{ product.inStock }}</h1>
-    <h1>{{ product.description }}</h1>
+    <p><strong>ID:</strong> {{ product.id }}</p>
+    <p>
+      <strong>Price:</strong> {{ (product.price - discount) | currency }}
+      <span v-if="discount > 0">(save {{ discount | currency }})</span>
+    </p>
+    <p><strong>In Stock:</strong> {{ product.inStock }}</p>
+    <p>{{ product.description }}</p>
 
     <div v-if="relatedProducts != null">
       <h2>Related Products</h2>
@@ -31,14 +34,24 @@ export default {
     return {
       products: products,
       product: null,
+      discount: 0,
     };
   },
   created() {
+    this.$watch("$route.query.discount", (newValue, oldValue) => {
+      this.discount = this.getDiscount(this.product.price, newValue);
+    });
+
     this.product = this.getProduct(this.productId);
+
+    if (typeof this.$route.query.discount !== "undefined") {
+      this.discount = this.getDiscount(this.product.price, this.$route.query.discount);
+    }
   },
   watch: {
     productId(newValue, oldValue) {
       this.product = this.getProduct(newValue);
+      this.discount = this.getDiscount(this.product.price, this.$route.query.discount);
     },
   },
   methods: {
@@ -54,6 +67,13 @@ export default {
     },
     goBack() {
       this.$router.go(-1);
+    },
+    getDiscount(originalPrice, percentage) {
+      if (!percentage) {
+        return 0;
+      }
+
+      return (originalPrice * percentage) / 100;
     },
   },
 };
