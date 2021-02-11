@@ -1,9 +1,28 @@
 <template>
   <div>
-    <h1><strong>ID:</strong> {{ product.id }}</h1>
-    <h1><strong>Price:</strong> {{ product.price | currency }}</h1>
-    <h1><strong>In Stock:</strong> {{ product.inStock }}</h1>
-    <h1>{{ product.description }}</h1>
+    <button class="btn btn-primary" @click="goBack">&laquo; Back</button>
+
+    <h1>{{ product.name }}</h1>
+    <ul class="nav nav-pills">
+      <router-link
+        class="presentation"
+        :to="{ name: 'viewProduct', params: { productId: product.id } }"
+        tag="li"
+        active-class="active"
+      >
+        <a>Details</a>
+      </router-link>
+      <router-link
+        class="presentation"
+        :to="{ name: 'productReviews', params: { productId: product.id } }"
+        tag="li"
+        active-class="active"
+      >
+        <a>Reviews</a>
+      </router-link>
+    </ul>
+    <br />
+    <router-view></router-view>
 
     <div v-if="relatedProducts != null">
       <h2>Related Products</h2>
@@ -54,6 +73,22 @@ export default {
     },
     goBack() {
       this.$router.go(-1);
+    },
+  },
+  computed: {
+    relatedProducts() {
+      if (this.product === null) {
+        return [];
+      }
+      let related = [];
+      let count = 0;
+      this.products.forEach((product) => {
+        if (product.id != this.product.id && count < 5) {
+          related.push(product);
+          count++;
+        }
+      });
+      return related;
     },
   },
 };
