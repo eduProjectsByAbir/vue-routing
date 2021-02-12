@@ -32,6 +32,12 @@
         </div>
       </nav>
 
+      <transition
+        enter-active-class="animated fadeInRight"
+        enter-active-class="animated fadeOutLeft"
+        mode="out-in"
+      >
+      </transition>
       <router-view :cart="cart"></router-view>
     </div>
   </div>
