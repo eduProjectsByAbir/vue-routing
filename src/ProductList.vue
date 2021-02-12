@@ -9,7 +9,11 @@
         />
         <div class="caption">
           <router-link
-            :to="{ name: 'viewProduct', params: { productId: product.id } }"
+            :to="{
+              name: 'viewProduct',
+              params: { productId: product.id },
+              hash: '#related',
+            }"
             tag="h4"
             class="group inner list-group-item-heading"
             ><a>{{ product.name }}</a>

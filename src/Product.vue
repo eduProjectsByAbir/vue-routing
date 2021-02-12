@@ -6,7 +6,7 @@
     <ul class="nav nav-pills">
       <router-link
         class="presentation"
-        :to="{ name: 'viewProduct', params: { productId: product.id }, hash: '#related' }"
+        :to="{ name: 'viewProduct', params: { productId: product.id } }"
         tag="li"
         active-class="active"
       >
