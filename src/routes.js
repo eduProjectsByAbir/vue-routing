@@ -3,11 +3,14 @@ import Cart from './Cart.vue';
 import ViewProduct from './ViewProduct.vue';
 import Product from './Product.vue';
 import ProductReviews from './ProductReviews.vue';
+import SpecialOffer from './SpecialOffer.vue';
 
 export const routes = [
-    // { path: '/products/:productId/view', redirect: { name: 'viewProduct' } },
     // legacy
-    { path: '', component: ProductList },
+    { path: '', components: {
+        default: ProductList,
+        discount: SpecialOffer
+    } },
     // nested routes
     { path: '/products/:productId',name: 'product', props:true, component: Product, children: [
         {path: 'details', name: 'viewProduct', props: true, component: ViewProduct },
