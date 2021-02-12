@@ -7,17 +7,6 @@
     </p>
     <p><strong>In Stock:</strong> {{ product.inStock }}</p>
     <p>{{ product.description }}</p>
-
-    <div v-if="relatedProducts != null">
-      <h2>Related Products</h2>
-      <ul>
-        <li v-for="related in relatedProducts">
-          <router-link :to="{ name: 'viewProduct', params: { productId: related.id } }">
-            {{ related.name }}
-          </router-link>
-        </li>
-      </ul>
-    </div>
   </div>
 </template>
 

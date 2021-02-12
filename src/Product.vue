@@ -6,7 +6,7 @@
     <ul class="nav nav-pills">
       <router-link
         class="presentation"
-        :to="{ name: 'viewProduct', params: { productId: product.id } }"
+        :to="{ name: 'viewProduct', params: { productId: product.id }, hash: '#related' }"
         tag="li"
         active-class="active"
       >
@@ -24,7 +24,7 @@
     <br />
     <router-view></router-view>
 
-    <div v-if="relatedProducts != null">
+    <div v-if="relatedProducts != null" id="related" style="margin: 500px 0 500px 0">
       <h2>Related Products</h2>
       <ul>
         <li v-for="related in relatedProducts">
