@@ -34,7 +34,7 @@
 
       <transition
         enter-active-class="animated fadeInRight"
-        enter-active-class="animated fadeOutLeft"
+        leave-active-class="animated fadeOutLeft"
         mode="out-in"
       >
         <router-view :cart="cart"></router-view>
