@@ -1,7 +1,3 @@
 <template>
-  <p>This is prodcut review page</p>
+    <p>This product has incredible reviews!</p>
 </template>
-
-<script>
-export default {};
-</script>
